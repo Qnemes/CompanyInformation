@@ -6,4 +6,4 @@
 <strong>main.js</strong> Script that maintains main page and logic of the app.  </br>
 <strong>images</strong> Images for the DataTables Jquery plug-in
 
-<a href="https://recruitmenttask.netlify.com/"><img src="https://imgur.com/q5tMfXc" title="Recruitment task" alt="App created by Qnemes"></a>
+<a href="https://recruitmenttask.netlify.com/"><img src="https://imgur.com/lSx7cQr" title="Recruitment task" alt="Created by Qnemes"></a>
