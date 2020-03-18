@@ -4,3 +4,4 @@
 <strong>info.html</strong> Page with additional information about companies.  </br>
 <strong>info.js</strong> Script that handles the additional information page logic. </br>
 <strong>main.js</strong> Script that maintains main page and logic of the app.  </br>
+<strong>images</strong> Images for the DataTables Jquery plug-in
