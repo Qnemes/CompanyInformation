@@ -6,4 +6,4 @@
 <strong>main.js</strong> Script that maintains main page and logic of the app.  </br>
 <strong>images</strong> Images for the DataTables Jquery plug-in
 
-<a href="https://qnemes.github.io/TicTacToe/"><img src="https://cdn4.iconfinder.com/data/icons/thin-games-fun/24/thin-1399_playing_tic_tac_toe_game-512.png" title="Recruitment task" alt="App created by Qnemes"></a>
+<a href="https://recruitmenttask.netlify.com/"><img src="https://imgur.com/q5tMfXc" title="Recruitment task" alt="App created by Qnemes"></a>
