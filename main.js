@@ -17,7 +17,7 @@ Promise.all(responses)
         summaryArr = data.map(item => ({   
           ...item,  
           summaryIncome: item.incomes.reduce((acc,income) => 
-            acc+= parseFloat(income.value), 0).toFixed(2)      
+            acc+= +(income.value), 0).toFixed(2)      
         }));          
         return fetch("https://recruitment.hal.skygate.io/companies") 
     .then(response => {

@@ -43,7 +43,7 @@ comparison.push(info.incomes[i].date.substr(0, 7));
 var lastmonth = 0;
 for (let i in comparison){
     if (comparison[0] === comparison[i]){        
-        lastmonth+=parseFloat(info.incomes[i].value);
+        lastmonth+=+(info.incomes[i].value);
     }      
 }
 document.getElementById('lastmonth').innerHTML+= lastmonth.toFixed(2);
