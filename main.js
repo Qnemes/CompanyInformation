@@ -18,14 +18,15 @@ Promise.all(responses)
           ...item,  
           summaryIncome: item.incomes.reduce((acc,income) => 
             acc+= +(income.value), 0).toFixed(2)      
-        }));          
+        })); 
+        $(".pre-loader").fadeOut("slow");          
         return fetch("https://recruitment.hal.skygate.io/companies") 
     .then(response => {
         if (response.ok) return response.json();
         throw new Error(response.statusText);
     });
   })
-    .then(data => {       
+    .then(data => {     
       // merging main data with summaryIncome property
         for (let i in data){
         mergedArr.push({...data[i],...summaryArr[i]})  
