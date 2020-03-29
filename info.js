@@ -4,18 +4,36 @@ let ctx = document.getElementById('myChart').getContext('2d');
 
 // sorting date of company incomes that passed from previous script by localStorage
 info.incomes.sort(function(a, b) {
-    return new Date(b.date)-new Date(a.date);
+    return new Date(b.date) - new Date(a.date);
 });
+
 document.getElementById('title').innerHTML+= info.name;
 document.getElementById('city').innerHTML+= info.city;
 document.getElementById('income').innerHTML+= info.summaryIncome; 
 document.getElementById('average').innerHTML+= average;
 
-// console.log(info.incomes[0].value);
-// dynamically pushing data to chart
-function addData(chart, label, data) {
+
+// manipulating date with moment.js and lodash.js
+const filteredDate = item => moment(item.date, 'YYYY-MM-DD').format('YYYY-MMM');
+let result = _.groupBy(info.incomes, filteredDate);
+
+// with grouped values by month I reducing them into one cumulative value
+for (let [key, value] of Object.entries(result)) {   
+    result[key] = result[key].reduce((a, b) => ({
+        value: +a.value + +b.value
+    }));  
+}
+// converting string values to a number
+Object.keys(result).forEach(function(key) {
+    if (typeof result[key].value !== 'number'){
+        result[key].value = +result[key].value;
+    }  
+});
+
+// dynamically pushing data to the chart
+function addData(chart, label, data) {    
     chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
+    chart.data.datasets.forEach((dataset) => {        
         dataset.data.push(data);
     });
     chart.update();
@@ -26,15 +44,16 @@ let myLineChart = new Chart(ctx, {
     data: {
         datasets: [{
             label: 'Monthly incomes',
-            backgroundColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgb(255, 99, 132)', 
             borderColor: 'rgb(255, 99, 132)',
         }]
     }
 });
-// getting rid of useless time and characters while showing graph
-for (let i in info.incomes){
-    info.incomes[i].date = info.incomes[i].date.slice(0,10)
-    addData(myLineChart,info.incomes[i].date,info.incomes[i].value) 
+
+// visual changes in the bar chart
+for (let i in result){ 
+    console.log(typeof result[i].value);
+    addData(myLineChart, i, result[i].value.toFixed(2)) 
 }
 var comparison =[];
 for (let i in info.incomes){    

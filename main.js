@@ -13,7 +13,7 @@ Promise.all(responses)
       //array for easy future data manipulating
         mergedArr = [];
         summaryArr = [];        
-        // accumulating and creating new object property that contains sum of company incomes 
+        // accumulating and creating new object property that contains sum of company incomes        
         summaryArr = data.map(item => ({   
           ...item,  
           summaryIncome: item.incomes.reduce((acc,income) => 
