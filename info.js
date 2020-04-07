@@ -12,7 +12,6 @@ document.getElementById('city').innerHTML+= info.city;
 document.getElementById('income').innerHTML+= info.summaryIncome; 
 document.getElementById('average').innerHTML+= average;
 
-
 // manipulating date with moment.js and lodash.js
 const filteredDate = item => moment(item.date, 'YYYY-MM-DD').format('YYYY-MMM');
 let result = _.groupBy(info.incomes, filteredDate);
@@ -23,6 +22,7 @@ for (let [key, value] of Object.entries(result)) {
         value: +a.value + +b.value
     }));  
 }
+
 // converting string values to a number
 Object.keys(result).forEach(function(key) {
     if (typeof result[key].value !== 'number'){
@@ -38,6 +38,7 @@ function addData(chart, label, data) {
     });
     chart.update();
 }
+
 // creating chart.js bar chart
 let myLineChart = new Chart(ctx, {
     type: 'bar',
@@ -52,7 +53,6 @@ let myLineChart = new Chart(ctx, {
 
 // visual changes in the bar chart
 for (let i in result){ 
-    console.log(typeof result[i].value);
     addData(myLineChart, i, result[i].value.toFixed(2)) 
 }
 var comparison =[];
